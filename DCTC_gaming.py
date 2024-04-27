@@ -46,20 +46,19 @@ height = root.winfo_screenheight()
 canvas_width = int(width * 0.7)
 canvas_height = int(height * 0.7)
 canvas.place(relx=0.5, rely=0.525, anchor='center', width=canvas_width, height=canvas_height)
-canvas.config(highlightbackground='white')
 root.config(width=canvas_width, height=canvas_height, bg="black")
 
 # Загрузка изображений машин
-player_car_image = tk.PhotoImage(file=f"{abspath}main.png")
+player_car_image = tk.PhotoImage(file=f"{abspath}carmain.png")
 
-enemy_list = ['cops',
+enemy_list = ['police',
               'taxi',
-              'gg',
-              'enemy',
-              'enemy2',
-              'enemy3',
-              'enemy4',
-              'enemy5']
+              'sport2',
+              'sport1',
+              'car1',
+              'car4',
+              'car2',
+              'car3']
 
 enemy_car_images = [
     tk.PhotoImage(file=f"{abspath}{enemy}.png")
@@ -180,7 +179,6 @@ def move_enemies():
     global player_x, player_y, game_started, score, game_over_flag, canvas
     if game_started:
         create_enemy()
-        collision = False
         enemies_to_remove = []
 
         for i, enemy in enumerate(enemies):
@@ -236,23 +234,34 @@ def show_poco_x3(count):
     except tk.TclError:
         pass
 
+# Добавьте глобальную переменную для хранения рекорда
+high_score = 0
+
 # Функция завершения игры
 def game_over():
-    global game_started, score_label, restart_button, canvas, poco_x3_placeholder
+    global game_started, score_label, restart_button, canvas, poco_x3_placeholder, high_score
     game_started = False  # Останавливаем игру
     poco_x3_placeholder = tk.Label(canvas, image='')
     poco_x3_placeholder.place()
     poco_x3_placeholder.pack()
     show_poco_x3(0)
     restart_button = tk.Button(button_frame, text="Начать заново",
-                               bg="gray", width=14, height=2,
+                               bg="gray", width=16, height=2,
                                command=game_restart, font=("Arial", 12, "bold"))
     restart_button.pack(side=tk.LEFT, padx=10)  # Добавляем горизонтальный отступ между кнопками
     restart_button.pack(side=tk.LEFT)  # Используем side=tk.LEFT для расположения кнопок в линию
     canvas.delete("all")
-    canvas.create_text(canvas_width // 2, canvas_height // 2, text="Игра окончена", font=("Algerian", 24))
-    canvas.create_text(canvas_width // 2, canvas_height // 2 + 30, text="Ваш счёт - " + str(int(score)),
-                       font=("Algerian", 24))
+     # Задаем цвет фона
+    canvas.configure(bg='#fcfefc')
+    canvas.create_text(canvas_width // 2, canvas_height // 2.7, text="ИГРА ОКОНЧЕНА", font=("Algerian", 24))
+    canvas.create_text(canvas_width // 2, canvas_height // 2.2 + 40, text="Ваш счёт - " + str(int(score)),
+                       font=("Algerian", 20))
+    # Обновляем рекорд, если текущий счет больше рекорда
+    if score > high_score:
+        high_score = score
+    # Отображаем рекорд
+    canvas.create_text(canvas_width // 2, canvas_height // 2.2 + 80, text="Ваш личный рекорд - " + str(int(high_score)),
+                       font=("Algerian", 20))
     score_label.pack_forget()
 
 # Функция перезапуска игры
@@ -331,17 +340,17 @@ title_text = canvas.create_text(canvas_width // 2, canvas_height // 3, text="Don
 
 sound_enabled = True  # Изначально звук включен
 background_music_thread = None  # Переменная для отслеживания фоновой музыки
-sound_button = tk.Button(button_frame, text="Музыка вкл/выкл", bg="gray", width=14, height=2, command=toggle_sound,
+sound_button = tk.Button(button_frame, text="Музыка вкл/выкл", bg="gray", width=16, height=2, command=toggle_sound,
                          font=("Arial", 12, "bold"))
 sound_button.pack(side=tk.LEFT, padx=10)  # Добавляем горизонтальный отступ между кнопками
 sound_button.pack(side=tk.LEFT)  # Используем side=tk.LEFT для расположения кнопок в линию
 
-start_button = tk.Button(button_frame, text="Играть", bg="gray", width=14, height=2, command=start_game,
+start_button = tk.Button(button_frame, text="Играть", bg="gray", width=16, height=2, command=start_game,
                          font=("Arial", 12, "bold"))
 start_button.pack(side=tk.LEFT, padx=10)  # Добавляем горизонтальный отступ между кнопками
 start_button.pack(side=tk.LEFT)  # Используем side=tk.LEFT для расположения кнопок в линию
 
-exit_button = tk.Button(button_frame, text="Выход", bg="gray", width=14, height=2, command=root.destroy,
+exit_button = tk.Button(button_frame, text="Выход", bg="gray", width=16, height=2, command=root.destroy,
                         font=("Arial", 12, "bold"))
 exit_button.pack(side=tk.LEFT, padx=10)  # Добавляем горизонтальный отступ между кнопками
 exit_button.pack(side=tk.LEFT)  # Используем side=tk.LEFT для расположения кнопок в линию
