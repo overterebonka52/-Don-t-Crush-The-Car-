@@ -116,7 +116,7 @@ game_over_flag = False
 
 # Счетчик очков
 score = 0
-score_label = tk.Label(canvas, text="Счёт: 0", bg="gray", font=("Algerian", 12))
+score_label = tk.Label(canvas, text="Счёт: 0", bg="#BFBFBF", font=("Times New Roman", 12))
 score_label.pack(pady=1.5)
 
 # Создание списка вражеских машин
@@ -246,7 +246,7 @@ def game_over():
     poco_x3_placeholder.pack()
     show_poco_x3(0)
     restart_button = tk.Button(button_frame, text="Начать заново",
-                               bg="gray", width=16, height=2,
+                               bg="#BFBFBF", width=16, height=2,
                                command=game_restart, font=("Arial", 12, "bold"))
     restart_button.pack(side=tk.LEFT, padx=10)  # Добавляем горизонтальный отступ между кнопками
     restart_button.pack(side=tk.LEFT)  # Используем side=tk.LEFT для расположения кнопок в линию
@@ -284,7 +284,7 @@ def game_restart():
     player_x = canvas_width // 2
     player_y = canvas_height - player_margin_y - 10  # Оставляем небольшой отступ от нижней границы
     player = canvas.create_image(player_x, player_y, image=player_car_image, anchor=tk.CENTER)
-    score_label = tk.Label(canvas, text="Счёт: 0", bg="gray", font=("Algerian", 12))
+    score_label = tk.Label(canvas, text="Счёт: 0", bg="#BFBFBF", font=("Algerian", 12))
     score_label.pack(pady=3)
     start_game()
 
@@ -340,17 +340,18 @@ title_text = canvas.create_text(canvas_width // 2, canvas_height // 3, text="Don
 
 sound_enabled = True  # Изначально звук включен
 background_music_thread = None  # Переменная для отслеживания фоновой музыки
-sound_button = tk.Button(button_frame, text="Музыка вкл/выкл", bg="gray", width=16, height=2, command=toggle_sound,
+
+sound_button = tk.Button(button_frame, text="Музыка вкл/выкл", bg="#BFBFBF", width=16, height=2, command=toggle_sound,
                          font=("Arial", 12, "bold"))
 sound_button.pack(side=tk.LEFT, padx=10)  # Добавляем горизонтальный отступ между кнопками
 sound_button.pack(side=tk.LEFT)  # Используем side=tk.LEFT для расположения кнопок в линию
 
-start_button = tk.Button(button_frame, text="Играть", bg="gray", width=16, height=2, command=start_game,
+start_button = tk.Button(button_frame, text="Играть", bg="#BFBFBF", width=16, height=2, command=start_game,
                          font=("Arial", 12, "bold"))
 start_button.pack(side=tk.LEFT, padx=10)  # Добавляем горизонтальный отступ между кнопками
 start_button.pack(side=tk.LEFT)  # Используем side=tk.LEFT для расположения кнопок в линию
 
-exit_button = tk.Button(button_frame, text="Выход", bg="gray", width=16, height=2, command=root.destroy,
+exit_button = tk.Button(button_frame, text="Выход", bg="#BFBFBF", width=16, height=2, command=root.destroy,
                         font=("Arial", 12, "bold"))
 exit_button.pack(side=tk.LEFT, padx=10)  # Добавляем горизонтальный отступ между кнопками
 exit_button.pack(side=tk.LEFT)  # Используем side=tk.LEFT для расположения кнопок в линию
