@@ -58,7 +58,9 @@ enemy_list = ['police',
               'car1',
               'car4',
               'car2',
-              'car3']
+              'car3',
+              'car5',
+              'car6']
 
 enemy_car_images = [
     tk.PhotoImage(file=f"{abspath}{enemy}.png")
@@ -116,7 +118,7 @@ game_over_flag = False
 
 # Счетчик очков
 score = 0
-score_label = tk.Label(canvas, text="Счёт: 0", bg="#BFBFBF", font=("Times New Roman", 12))
+score_label = tk.Label(canvas, text="Счёт: 0", bg="#BFBFBF", font=("Algerian", 12))
 score_label.pack(pady=1.5)
 
 # Создание списка вражеских машин
