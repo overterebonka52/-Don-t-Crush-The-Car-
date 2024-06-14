@@ -53,8 +53,7 @@ player_car_image = tk.PhotoImage(file=f"{abspath}carmain.png")
 
 enemy_list = ['police',
               'taxi',
-              'sport2',
-              'sport1',
+              'sport',
               'car1',
               'car4',
               'car2',
