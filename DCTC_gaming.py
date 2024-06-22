@@ -4,7 +4,6 @@ import keyboard
 import winsound
 import threading
 from PIL import Image, ImageTk
-import os
 from tkinter import Frame
 
 # Фоновая музыка
