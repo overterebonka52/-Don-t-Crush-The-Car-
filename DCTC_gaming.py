@@ -7,8 +7,6 @@ from PIL import Image, ImageTk
 import os
 from tkinter import Frame
 
-abspath = os.path.dirname(os.path.abspath(__file__)) + os.path.sep
-
 # Фоновая музыка
 background_music_thread = None
 
@@ -16,7 +14,7 @@ background_music_thread = None
 def play_background_music():
     global background_music_thread, sound_enabled
     if sound_enabled:
-        filename = f"{abspath}DCTC.wav"
+        filename = f"assets/DCTC.wav"
         if background_music_thread is None or not background_music_thread.is_alive():
             background_music_thread = threading.Thread(target=winsound.PlaySound,
                                                        args=(filename, winsound.SND_ASYNC | winsound.SND_LOOP))
@@ -49,7 +47,7 @@ canvas.place(relx=0.5, rely=0.525, anchor='center', width=canvas_width, height=c
 root.config(width=canvas_width, height=canvas_height, bg="black")
 
 # Загрузка изображений машин
-player_car_image = tk.PhotoImage(file=f"{abspath}carmain.png")
+player_car_image = tk.PhotoImage(file=f"assets/carmain.png")
 
 enemy_list = ['police',
               'taxi',
@@ -62,12 +60,12 @@ enemy_list = ['police',
               'car6']
 
 enemy_car_images = [
-    tk.PhotoImage(file=f"{abspath}{enemy}.png")
+    tk.PhotoImage(file=f"assets/{enemy}.png")
     for enemy in enemy_list
 ]
 
 # Загрузка изображений для фона (дороги)
-pil_image = Image.open(f"{abspath}road1.png")
+pil_image = Image.open(f"assets/road1.png")
 
 # Растягивание изображений
 width, height = pil_image.size
@@ -79,7 +77,7 @@ road = ImageTk.PhotoImage(pil_image)
 road_images = [road]
 
 # Анимация взрыва
-poco_x3_path = f'{abspath}explosion.gif'
+poco_x3_path = f"assets/explosion.gif"
 poco_x3_frames = Image.open(poco_x3_path).n_frames
 image_frames_pack_poco_x3 = [tk.PhotoImage(file=poco_x3_path, format=f'gif -index {i}')
                              for i in range(poco_x3_frames)]
